@@ -1,0 +1,19 @@
+{
+  "apis":[
+
+  ],
+  "id":"950005623902",
+  "k8s":[
+
+  ],
+  "k8s_total_count":0,
+  "name":"quickstart-1571414026042",
+  "paas":{
+
+  },
+  "parent":"910998912789",
+  "services":[
+
+  ],
+  "state":"ACTIVE"
+}

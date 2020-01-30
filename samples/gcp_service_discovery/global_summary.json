@@ -1,0 +1,24 @@
+{
+  "total_orgs":1,
+  "total_folders":2,
+  "total_projects":3,
+  "total_k8s_clusters":1,
+  "orgs":[
+    "levelops.io"
+  ],
+  "folders":[
+    "910998912789-353645900378",
+    "910998912789-48689510323"
+  ],
+  "projects":{
+    "quickstart-1571414026042":{
+      "k8s_clusters":0
+    },
+    "gosdl-254718":{
+      "k8s_clusters":0
+    },
+    "trusty-hangar-248221":{
+      "k8s_clusters":1
+    }
+  }
+}

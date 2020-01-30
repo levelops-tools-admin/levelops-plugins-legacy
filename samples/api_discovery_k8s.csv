@@ -1,0 +1,139 @@
+reference, api_endpoint
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//c
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//io.grpc/method
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,api.company.com//
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//pasta
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lo.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lucky
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.well_known/foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*//http
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/e2e/tests/pilot/testdata/ingress.yaml,*.baz.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//logout
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//productpage
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//api/v1/products.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//login
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//foo
+/go/src/istio.io/istio/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//bar
+/go/src/istio.io/istio/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//logout
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//productpage
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//api/v1/products.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//login
+/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//logout
+/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//productpage
+/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//api/v1/products.*
+/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//login
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/istioctl/cmd/testdata/ingress/another-ingress.yaml,*//foo/bar/
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//lucky1
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,fortio.{{ .Values.domain }}//lucky2
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,fortiotls.{{ .Values.domain }}//foo
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//.*
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//b.*
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//c
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//io.grpc/method
+/go/pkg/mod/istio.io/tools@v0.0.0-20191011195321-48af5d611ca2/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//.well_known/foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//logout
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//productpage
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//api/v1/products.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//login
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//c
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//io.grpc/method
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,api.company.com//
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//pasta
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lo.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lucky
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.well_known/foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*//http
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/e2e/tests/pilot/testdata/ingress.yaml,*.baz.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/galley/pkg/config/testing/data/builtin/ingress.yaml,*//http
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/galley/pkg/config/testing/data/builtin/ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/galley/pkg/config/testing/data/builtin/ingress.yaml,*//pasta
+/go/pkg/mod/k8s.io/api@v0.0.0-20190620084959-7cf5895f2711/testdata/v1.14.0/extensions.v1beta1.Ingress.yaml,28/29
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//foo
+/go/src/istio.io/istio/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//bar
+/go/src/istio.io/istio/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/istioctl/cmd/testdata/ingress/another-ingress.yaml,*//foo/bar/
+/go/src/istio.io/istio/galley/pkg/config/testing/data/builtin/ingress.yaml,*//http
+/go/src/istio.io/istio/galley/pkg/config/testing/data/builtin/ingress.yaml,*//.*
+/go/src/istio.io/istio/galley/pkg/config/testing/data/builtin/ingress.yaml,*//pasta
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//foo
+/go/src/istio.io/istio/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//bar
+/go/src/istio.io/istio/tests/integration/conformance/testdata/k8s/ingress/merge/stage1/input.yaml,foo.bar.com//foo
+/go/src/istio.io/istio/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//bar
+/go/src/istio.io/istio/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_1.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/galley/pkg/config/testing/data/builtin/ingress.yaml,*//http
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/galley/pkg/config/testing/data/builtin/ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/galley/pkg/config/testing/data/builtin/ingress.yaml,*//pasta
+/go/src/istio.io/istio/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//foo/.*
+/go/src/istio.io/istio/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//.*
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//lucky1
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,fortio.{{ .Values.domain }}//lucky2
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,fortiotls.{{ .Values.domain }}//foo
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//.*
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//b.*
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//c
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//io.grpc/method
+/go/pkg/mod/github.com/istio/tools@v0.0.0-20191011133710-67546bb2dd77/perf/stability/allconfig/templates/ingress.yaml,httpbin.{{ .Values.domain }}//.well_known/foo
+/go/pkg/mod/k8s.io/api@v0.0.0-20190620084959-7cf5895f2711/testdata/HEAD/extensions.v1beta1.Ingress.yaml,28/29
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//foo/.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/galley/pkg/config/testing/data/builtin/ingress.yaml,*//http
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/galley/pkg/config/testing/data/builtin/ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/galley/pkg/config/testing/data/builtin/ingress.yaml,*//pasta
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/tests/integration/conformance/testdata/k8s/ingress/merge/stage0/input.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191120193847-901feaa53612/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//foo/.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//.*
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//c
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.*
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//io.grpc/method
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,api.company.com//
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//pasta
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lo.*
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lucky
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.well_known/foo
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*//http
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,foo.bar.com//foo
+/go/src/istio.io/istio/tests/e2e/tests/pilot/testdata/ingress.yaml,*.baz.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//bar
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/galley/testdata/conversion/dataset/extensions/v1beta1/ingress_merge_0.yaml,foo.bar.com//foo
+/go/src/istio.io/istio/istioctl/cmd/testdata/ingress/another-ingress.yaml,*//foo/bar/
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//foo/.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/istioctl/cmd/testdata/ingress/myservice-ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010234722-c58def259087/istioctl/cmd/testdata/ingress/another-ingress.yaml,*//foo/bar/
+/go/src/istio.io/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//logout
+/go/src/istio.io/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//productpage
+/go/src/istio.io/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//api/v1/products.*
+/go/src/istio.io/istio/samples/bookinfo/platform/kube/bookinfo-ingress.yaml,*//login
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//c
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//io.grpc/method
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,api.company.com//
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//pasta
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lo.*
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//lucky
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//.well_known/foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*//http
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,foo.bar.com//foo
+/go/pkg/mod/istio.io/istio@v0.0.0-20191010223521-26911bbaaddf/tests/e2e/tests/pilot/testdata/ingress.yaml,*.baz.com//bar

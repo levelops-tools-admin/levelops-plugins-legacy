@@ -1,0 +1,8 @@
+reference, api_endpoint
+/home/ileon/dev/aws-api-gateway-for-cloudformation/examples/api-import-with-swagger.template,<petstore>/
+/home/ileon/dev/aws-api-gateway-for-cloudformation/examples/api-import-with-swagger.template,<petstore>/pets/{petId}
+/home/ileon/dev/aws-api-gateway-for-cloudformation/examples/api-import-with-swagger.template,<petstore>/pets
+/home/ileon/dev/cloudformation-api-gateway/cloudformation.template,<greetingapi>/*/greeting
+/home/ileon/dev/aws-api-gateway-for-cloudformation/examples/api-with-domain-name.template,<testrestapi>/
+/home/ileon/dev/aws-api-gateway-for-cloudformation/examples/api-with-cors.template,<restapi>/
+/home/ileon/dev/aws-api-gateway-for-cloudformation/examples/api-with-models.template,<restapi>/
