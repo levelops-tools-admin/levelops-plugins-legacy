@@ -262,10 +262,26 @@ LevelOps Plugins are licensed under Apache License, Version 2
     <td><p>Use this tool to check the security posture of your Jenkins environments, against 40+ security spanning across access, permissions, settings and plug-ins</p><br /> Recommended Use Cases: <br /> <ul><li>Tool Hardening</li></ul></td>
     <td><ul><li>
 
-Coming Soon
+[html](samples/jenkins_security_hardening_plugin/LevelOps_Jenkins_Security_Report.html)
 </li></ul></td>
     <td>
-    Coming Soon
+    <b>Standalone mode:</b>
+
+      Install LevelOps Jenkins Security Plugin.
+      In Jenkins UI go to "Manage Jenkins" -> "LevelOps Plugin" & configure the Plugin.
+      e.g. The report directory path. Frequency to run the report. (cron schedule) etc.
+      To run report immediately click on "Run Report Now".
+      To view report click on "Download Report".
+      
+   <b>Connected mode:</b>
+
+      Install LevelOps Jenkins Security Plugin.
+      In Jenkins UI go to "Manage Jenkins" -> "LevelOps Plugin" & configure the Plugin.
+      e.g. The report directory path. Frequency to run the report. (cron schedule) etc.
+      To send data to LevelOps, click on the optional check "Send data to LevelOps".
+      To run report immediately click on "Run Report Now".
+      To view report click on "Download Report".
+    
    </td>
   </tr>
 </table>
