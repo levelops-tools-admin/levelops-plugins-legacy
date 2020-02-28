@@ -8,7 +8,12 @@ from time import gmtime, strftime, time
 
 
 class Runner(object):
-  def __init__(self):
+  def __init__(self, base_url=None):
+    if not base_url or len(base_url.strip()):
+      self.base_url = "https://api.levelops.io"
+    else:
+      self.base_url = base_url
+    self.api_endpoint = '{base_url}/v1/plugins/results'.format(base_url=self.base_url)
     self.metadata = {
         "version": "<runner version>",
         "os": "redhat8",
@@ -35,8 +40,8 @@ class Runner(object):
     })
     headers = {"Content-Type": "application/json"}
     if token:
-        headers['Authorization'] = 'Bearer ' + token
+        headers['Authorization'] = 'ApiKey ' + token
     
-    respons = post(url='https://api.levelops.io/v1/plugins/results', data=data, headers=headers)
+    respons = post(url=self.api_endpoint, data=data, headers=headers)
 
     print("Response: " + str(respons.text))

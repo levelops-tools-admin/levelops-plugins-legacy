@@ -1,0 +1,1 @@
+from .git_tools import get_project_name
