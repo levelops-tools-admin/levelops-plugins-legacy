@@ -1,8 +1,10 @@
+import logging
 from requests import post
 from ujson import dumps
 from . import Plugin
 from time import gmtime, strftime, time
 
+log = logging.getLogger(__name__)
 
 # YYYY-MM-DDThh:mm:ssTZD
 
@@ -42,6 +44,9 @@ class Runner(object):
     if token:
         headers['Authorization'] = 'ApiKey ' + token
     
-    respons = post(url=self.api_endpoint, data=data, headers=headers)
-
-    print("Response: " + str(respons.text))
+    response = post(url=self.api_endpoint, data=data, headers=headers)
+    if response.status_code == 202:
+      log.info("Results submited to the endpoint '%s'", self.api_endpoint)
+      log.debug("Response: %s", response.text)
+    else:
+      log.error("Results not accepted by the endpoint '%s': %s", self.api_endpoint, response.text)

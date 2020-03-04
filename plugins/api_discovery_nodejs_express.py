@@ -227,7 +227,7 @@ if __name__ == "__main__":
   if len(f_targets) < 1:
     log.error("must provide a list of directories to scan (space separated)")
     sys.exit(1)
-  runner = Runner()
+  runner = Runner(endpoint=options.endpoint)
   success = False
   start_time = time.time()
   try:
@@ -284,8 +284,9 @@ if __name__ == "__main__":
   except Exception as e:
     log.error("Couldn't successfully complete the scanning.", e, exc_info=True)
     results = str(e)
-  except Error as e:
-    log.error("Couldn't successfully complete the scanning.", e, exc_info=True)
+  except:
+    error = sys.exc_info()
+    log.error("Couldn't successfully complete the scanning: %s - %s", error[0], error[1], error[2])
     results = str(e)
   finally:
     end_time = time.time()

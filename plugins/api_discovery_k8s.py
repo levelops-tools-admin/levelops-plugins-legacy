@@ -114,16 +114,10 @@ def load_json_resource(r_path):
     return loads(resource)
 
 
-if __name__ == "__main__":
-  logging.basicConfig(level="INFO", format="[%(threadName)s] [%(levelname)s]: %(message)s")
 
-  parser = ArgumentParser(prog="Levelops k8s configuration scanner.", usage="./api_discovery_k8s.py (optional <flags>) <directory to scan>")
-  parser.add_argument('-t', '--threads', dest='threads', help='Number of threads', type=int, default=5)
-  for parser_option in default_plugin_options:
-    parser.add_argument(*parser_option['args'], **parser_option['kwords'])
 
-  options, f_targets = parser.parse_known_args()
 
+def validate_args(options, f_targets):
   if options.debug:
       log.setLevel('DEBUG')
   if options.submit:
@@ -140,18 +134,18 @@ if __name__ == "__main__":
   if len(f_targets) < 1:
     log.error("must provide a list of directories to scan (space separated)")
     sys.exit(1)
-  runner = Runner()
-  success = False
-  start_time = time.time()
-  try:
-    s = Scanner(queue_timeout=0.5)
-    for f_target in f_targets:
-      log.info("scanning path: %s" % f_target)
-      s.scan_directory(base_path=f_target, filters=[".yml", ".yaml", ".json"], action=process_file)
-    s.wait_and_finish()
-    success = True
-    results =  s.get_report()
 
+
+def get_options():
+  parser = ArgumentParser(prog="Levelops k8s configuration scanner.", usage="./api_discovery_k8s.py (optional <flags>) <directory to scan>")
+  parser.add_argument('-t', '--threads', dest='threads', help='Number of threads', type=int, default=5)
+  for parser_option in default_plugin_options:
+    parser.add_argument(*parser_option['args'], **parser_option['kwords'])
+
+  return parser.parse_known_args()
+
+
+def handle_output(options, results):
     if options.json:
       if options.print_results:
         log.info(dumps(results, indent=2))
@@ -185,11 +179,33 @@ if __name__ == "__main__":
         for api in results.apis:
           for endpoint in api.endpoints:
             log.info("%s     %s", api.name, endpoint.path)
+
+
+if __name__ == "__main__":
+  logging.basicConfig(level="INFO", format="[%(threadName)s] [%(levelname)s]: %(message)s")
+
+  options, f_targets = get_options()
+  validate_args(options, f_targets)
+
+  runner = Runner(endpoint=options.endpoint)
+  success = False
+  start_time = time.time()
+  try:
+    s = Scanner(queue_timeout=0.5)
+    for f_target in f_targets:
+      log.info("scanning path: %s" % f_target)
+      s.scan_directory(base_path=f_target, filters=[".yml", ".yaml", ".json"], action=process_file)
+    s.wait_and_finish()
+    success = True
+    results =  s.get_report()
+
+    handle_output(options, results)
   except Exception as e:
     log.error("Couldn't successfully complete the scanning.", e, exc_info=True)
     results = str(e)
-  except Error as e:
-    log.error("Couldn't successfully complete the scanning.", e, exc_info=True)
+  except:
+    error = sys.exc_info()
+    log.error("Couldn't successfully complete the scanning: %s - %s", error[0], error[1], error[2])
     results = str(e)
   finally:
     end_time = time.time()

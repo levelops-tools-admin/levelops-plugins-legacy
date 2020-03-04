@@ -33,12 +33,6 @@ plugin = Plugin(name="sast_brakeman", version="1")
 
 result_project_extractor = compile(pattern='^.*(levelops-brakeman-(.*)).json\s*$', flags=(I | M))
 
-# Get sources dir
-# Get breakman option - docker or gem
-# Get Output options
-# Run
-
-# docker run -v /home/ileon/samples/rails/discourse:/code -v /home/ileon/samples/reports:/reports --user $(id -u):$(id -g) presidentbeef/brakeman --format json --quiet -o /reports/brakeman.json
 def get_formats_and_outputs(options):
   formats = []
   if options.json:
@@ -124,10 +118,9 @@ def validate_args(options, f_targets):
 
 
 def get_options():
-  parser = ArgumentParser(prog="Levelops brakeman scanner.", usage="./brakeman_report.py (optional <flags>) <directory to scan>")
+  parser = ArgumentParser(prog="Levelops brakeman scanner.", usage="./levelops-brakeman.py (optional <flags>) <directory to scan>")
   parser.add_argument('--docker', dest='docker', help='Will run in docker mode, docker command line needs to be in the path and the user that runs the plugin needs to have permissions to run docker containers.', action="store_true")
   parser.add_argument('--gem', dest='gem', help='Will run in gem mode, the brakeman gem must be installed and available in the env.', action="store_true")
-  # parser.add_argument('--en', dest='gem', help='Will run in gem mode, the brakeman gem must be installed and available in the env..', action="store_true")
   parser.add_argument('--html', dest='html', help='If present, the output of the script will be in html format.', action='store_true')
   parser.add_argument('--table', dest='table', help='If present, the output of the script will be in table format.', action='store_true')
   parser.add_argument('--markdown', dest='markdown', help='If present, the output of the script will be in markdown format.', action='store_true')
@@ -218,8 +211,9 @@ if __name__ == "__main__":
   except Exception as e:
     log.error("Couldn't successfully complete the scanning: %s", e, exc_info=True)
     results = str(e)
-  except Error as e:
-    log.error("Couldn't successfully complete the scanning: %s", e, exc_info=True)
+  except:
+    error = sys.exc_info()
+    log.error("Couldn't successfully complete the scanning: %s - %s", error[0], error[1], error[2])
     results = str(e)
   finally:
     end_time = time.time()
