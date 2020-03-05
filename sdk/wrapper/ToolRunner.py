@@ -55,14 +55,14 @@ class ToolRunner(object):
         cmd = self.command.format(base_path=base_path, project_name=project_name, **params).format(base_path=base_path, project_name=project_name)
         log.debug("Command -> %s", cmd)
         # run command
-        brakeman = subprocess.run(args=shlex.split(cmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-        log.debug("Args: %s", brakeman.args)
-        if brakeman.returncode in self.error_codes:
-            message = "[%s] %s. scan path: %s" % (project_name, brakeman.stderr, base_path)
+        tool = subprocess.run(args=shlex.split(cmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        log.debug("Args: %s", tool.args)
+        if tool.returncode in self.error_codes:
+            message = "[%s] %s. scan path: %s" % (project_name, tool.stderr, base_path)
             self.errors.append(message)
             log.debug(message)
             self.everything_ok = False
-        return project_name
+        return project_name, tool.stdout, tool.stderr
     
     def get_tmp_locations(self):
         return self.tmp_locations

@@ -227,7 +227,7 @@ if __name__ == "__main__":
   if len(f_targets) < 1:
     log.error("must provide a list of directories to scan (space separated)")
     sys.exit(1)
-  runner = Runner(endpoint=options.endpoint)
+  runner = Runner(base_url=options.endpoint)
   success = False
   start_time = time.time()
   try:

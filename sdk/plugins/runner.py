@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 class Runner(object):
   def __init__(self, base_url=None):
-    if not base_url or len(base_url.strip()):
+    if not base_url or len(base_url.strip()) <= 0:
       self.base_url = "https://api.levelops.io"
     else:
       self.base_url = base_url
@@ -29,7 +29,7 @@ class Runner(object):
     # for key in results:
     #   if not data[key]:
     #     data.pop(key, None)
-    print(dumps(results, indent=2))
+    log.debug(dumps(results, indent=2))
     data = dumps({
         "tool" : plugin.name,
         "version" : plugin.version,
@@ -49,4 +49,4 @@ class Runner(object):
       log.info("Results submited to the endpoint '%s'", self.api_endpoint)
       log.debug("Response: %s", response.text)
     else:
-      log.error("Results not accepted by the endpoint '%s': %s", self.api_endpoint, response.text)
+      log.error("Results not accepted by the endpoint '%s': %s - %s : %s", self.api_endpoint, response.status_code, response.text, response.reason)
