@@ -1,5 +1,8 @@
 import os
-from configparser import ConfigParser
+import logging
+from configparser import ConfigParser, DuplicateOptionError
+
+log = logging.getLogger(__name__)
 
 ORIGIN_SECTION = 'remote "origin"'
 
@@ -13,7 +16,11 @@ def _extract_project_name_from_git_config(base_path):
   if not os.path.exists(git_config):
     return None
   config = ConfigParser()
-  config.read(git_config)
+  try:
+    config.read(git_config)
+  except DuplicateOptionError as e:
+    log.debug("Couldn't load the .git/config file: %s", e)
+    return None
   sections = [x for x,y in config.items()]
   if ORIGIN_SECTION in sections:
     project_name = _extract_project_name_from_git_remote(config[ORIGIN_SECTION])

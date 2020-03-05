@@ -187,7 +187,7 @@ if __name__ == "__main__":
   options, f_targets = get_options()
   validate_args(options, f_targets)
 
-  runner = Runner(endpoint=options.endpoint)
+  runner = Runner(base_url=options.endpoint)
   success = False
   start_time = time.time()
   try:

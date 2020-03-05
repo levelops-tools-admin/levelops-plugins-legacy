@@ -35,7 +35,7 @@ result_project_extractor = compile(pattern='^.*(levelops-brakeman-(.*)).json\s*$
 
 def get_formats_and_outputs(options):
   formats = []
-  if options.json:
+  if options.json or options.submit:
     formats.append("json")
   if options.csv:
     formats.append("csv")
@@ -44,7 +44,7 @@ def get_formats_and_outputs(options):
   if options.table:
     formats.append("table")
   if options.markdown:
-    formats.append("markdown")
+    formats.append("md")
   outputs = []
   if options.output_file:
     outputs.append("file")
@@ -164,7 +164,7 @@ def get_results_report(p_names, tmp_locations):
 
 
 if __name__ == "__main__":
-  logging.basicConfig(level="DEBUG", format="[%(threadName)s] [%(levelname)s]: %(message)s")
+  logging.basicConfig(level="INFO", format="[%(threadName)s] [%(levelname)s]: %(message)s")
 
   options, f_targets = get_options()
   validate_args(options, f_targets)
@@ -193,14 +193,14 @@ if __name__ == "__main__":
 
 
   success = False
-  runner = Runner(endpoint=options.endpoint)
+  runner = Runner(base_url=options.endpoint)
   start_time = time.time()
   p_names = set()
   try:
     with ToolRunner(command=cmd, max_concurrent=3, error_codes=set([1,126, 127, 128, 130, 137, 139, 143])) as s:
       for f_target in f_targets:
         log.info("scanning path: %s" % f_target)
-        project_name = s.scan_directory(base_path=f_target, params=params, tmp_location=reports_tmp)
+        project_name, out, errors = s.scan_directory(base_path=f_target, params=params, tmp_location=reports_tmp)
         p_names.add(project_name)
       s.wait_and_finish()
       success = s.are_all_successes()
@@ -218,8 +218,13 @@ if __name__ == "__main__":
   finally:
     end_time = time.time()
     if options.submit:
-      # post success or failure to levelops
-      runner.submit(success=success, results=results, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=options.labels)
+      # post success or failure to levelopsfor key in results:
+      for key in results:
+        result = results[key]
+        labels = {'repo_name': [key]}
+        if options.labels and type(options.labels) == dict:
+          labels.update(options.labels)
+        runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
   if success:
     sys.exit(0)
   else:
