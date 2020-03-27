@@ -1,3 +1,4 @@
 requests==2.22.0
 ujson==1.35
 PyYaml==5.2
+pdfminer.six==20200124

@@ -1,0 +1,427 @@
+{
+    "service": "My Service",
+    "security": "Fair",
+    "grade": "C",
+    "issues_summary": {
+        "total_critical": 1,
+        "total_high": 4,
+        "total_med": 6,
+        "total_low": 10,
+        "total_info": 8,
+        "total_issues": 29,
+        "by_categories": {
+            "none": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "architecture": {
+                "critical": 1,
+                "high": 0,
+                "med": 0,
+                "low": 0,
+                "info": 0,
+                "total": 1
+            },
+            "authentication": {
+                "critical": 0,
+                "high": 0,
+                "med": 0,
+                "low": 0,
+                "info": 0,
+                "total": 0
+            },
+            "session__management": {
+                "critical": 0,
+                "high": 0,
+                "med": 1,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "access_control": {
+                "critical": 0,
+                "high": 0,
+                "med": 0,
+                "low": 1,
+                "info": 0,
+                "total": 1
+            },
+            "malicious_input_handling": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "cryptography": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "error_handling_and_logging": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "data_protection": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "communications": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "http_security_configuration": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "malicious_controls": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "business_logic": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "file_and_resources": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 0,
+                "total": 4
+            },
+            "mobile": {
+                "critical": 0,
+                "high": 0,
+                "med": 2,
+                "low": 2,
+                "info": 1,
+                "total": 5
+            },
+            "web_services": {
+                "critical": 0,
+                "high": 3,
+                "med": 1,
+                "low": 1,
+                "info": 2,
+                "total": 7
+            },
+            "configuration": {
+                "critical": 0,
+                "high": 1,
+                "med": 0,
+                "low": 2,
+                "info": 0,
+                "total": 3
+            },
+            "internet_of_things": {
+                "critical": 0,
+                "high": 1,
+                "med": 2,
+                "low": 0,
+                "info": 6,
+                "total": 9
+            }
+        }
+    },
+    "assesments": {
+        "web_application_assesment": {
+            "findings": {
+                "critical_risk": {
+                    "google_cloud_compromise": {
+                        "meta": {
+                            "category": "architecture",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "OWASP-A9: https://www.owasp.org/index.php/Top_10_2013-A9",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cwe.mitre.org/data/definitions/201.html": "CWE-201 - Information Exposure Through Sent Data"
+                        }
+                    },
+                    "extensible_service_proxy_authorization_bypass": {
+                        "meta": {
+                            "category": "access_control",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cloud.google.com/endpoints/docs/openapi/authenticating-users-auth0": "Google ESP: Authenticating Auth0 Users"
+                        }
+                    }
+                },
+                "high_risk": {
+                    "transport_encryption_not_enforced_for_password_reset_links": {
+                        "meta": {
+                            "category": "architecture",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "OWASP-A9: https://www.owasp.org/index.php/Top_10_2013-A9",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cwe.mitre.org/data/definitions/201.html": "CWE-201 - Information Exposure Through Sent Data"
+                        }
+                    },
+                    "server_side_request_forgery_(SSRF)": {
+                        "meta": {
+                            "category": "access_control",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cloud.google.com/endpoints/docs/openapi/authenticating-users-auth0": "Google ESP: Authenticating Auth0 Users"
+                        }
+                    }
+                },
+                "medium_risk": {
+                    "kubernetes_metadata_service_exposed": {
+                        "meta": {
+                            "category": "architecture",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "OWASP-A9: https://www.owasp.org/index.php/Top_10_2013-A9",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cwe.mitre.org/data/definitions/201.html": "CWE-201 - Information Exposure Through Sent Data"
+                        }
+                    },
+                    "insecure_inter_service_authorization_controls": {
+                        "meta": {
+                            "category": "access_control",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cloud.google.com/endpoints/docs/openapi/authenticating-users-auth0": "Google ESP: Authenticating Auth0 Users"
+                        }
+                    }
+                },
+                "low_risk": {
+                    "insufficient_authorization_in_user_management_feature": {
+                        "meta": {
+                            "category": "architecture",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "OWASP-A9: https://www.owasp.org/index.php/Top_10_2013-A9",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cwe.mitre.org/data/definitions/201.html": "CWE-201 - Information Exposure Through Sent Data"
+                        }
+                    },
+                    "kubernetes_cluster_without_master_authorized_networks": {
+                        "meta": {
+                            "category": "configuration_management",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(3) Complete",
+                                "business_value": "(3) Crucial"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cloud.google.com/endpoints/docs/openapi/authenticating-users-auth0": "Google ESP: Authenticating Auth0 Users"
+                        }
+                    },
+                    "cloud_sql_instaance_allows_public_ip_connections": {
+                        "meta": {
+                            "category": "sql",
+                            "WASC": "",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "",
+                            "score": {
+                                "access_vector": "(3) External",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(2) User",
+                                "compromise_impact": "(2) Partial",
+                                "business_value": "(2) System"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "application_impacted": "",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cloud.google.com/blog/products/gcp/best-practices-for-securing-your-google-cloud-databases": "GCP: Securing Cloud Databases",
+                            "https://cloud.google.com/sql/docs/mysql/best-practices": "GCP: Cloud MySql Best Practices",
+                            "https://cloud.google.com/sdk/gcloud/reference/sql/connect": "GCP SQL Connect"
+                        }
+                    },
+                    "o365_service_principal_credentials_returned_in_server_response": {
+                        "meta": {
+                            "category": "authentication",
+                            "WASC": "WASC-13: http://projects.webappsec.org/w/page/13246975/Threat%20Classification%20Taxonomy%20Cross%20Reference%20View",
+                            "CWE": "",
+                            "SANS Top 25": "",
+                            "OWASP Top 10": "OWASP-A2: https://www.owasp.org/index.php/Top_10_2013-A2",
+                            "score": {
+                                "access_vector": "(2) Adjacent",
+                                "attack_feasibility": "(3) Demostrated",
+                                "authentication": "(3) None",
+                                "compromise_impact": "(2) Partial",
+                                "business_value": "(2) System"
+                            }
+                        },
+                        "status": "",
+                        "vulnerability_description": "",
+                        "impact": "",
+                        "graphql_query_impacted": "O365ServiceAccountStatus",
+                        "verification_and_attack_information": "",
+                        "recomendation": "",
+                        "references": {
+                            "https://cwe.mitre.org/data/definitions/201.html": "CWE-201 - Information Exposure Through Sent Data"
+                        }
+                    }
+                },
+                "informational_risk": {
+                }
+            }
+        }
+    }
+}
