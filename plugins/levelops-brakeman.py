@@ -209,21 +209,25 @@ if __name__ == "__main__":
           results = get_results_report(p_names, s.get_tmp_locations())
         handle_output(formats, outputs, output_location, s.get_tmp_locations())
   except Exception as e:
-    log.error("Couldn't successfully complete the scanning: %s", e, exc_info=True)
-    results = str(e)
+    message = "Couldn't successfully complete the scanning: %s", e
+    log.error(message, exc_info=True)
+    results = message
   except:
     error = sys.exc_info()
-    log.error("Couldn't successfully complete the scanning: %s - %s", error[0], error[1], error[2])
-    results = str(e)
+    message = "Couldn't successfully complete the scanning: %s - %s" % (error[0], error[1])
+    log.error(message, error[2])
+    results = message
   finally:
     end_time = time.time()
     if options.submit:
       # post success or failure to levelopsfor key in results:
-      for key in results:
-        result = results[key]
-        labels = {'repo_name': [key]}
-        if options.labels and type(options.labels) == dict:
-          labels.update(options.labels)
+      labels = options.labels if options.labels and type(options.labels) == dict else {}
+      if type(results) is not dict:
+        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+      else:
+        for key in results:
+          result = results[key]
+          labels.update({'project_name': [result['project_name']]})
         runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
   if success:
     sys.exit(0)
