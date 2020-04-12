@@ -15,7 +15,10 @@ class Runner(object):
       self.base_url = "https://api.levelops.io"
     else:
       self.base_url = base_url
-    self.api_endpoint = '{base_url}/v1/plugins/results'.format(base_url=self.base_url)
+    if self.base_url.endswith('/plugins/results'):
+      self.api_endpoint = self.base_url
+    else:
+      self.api_endpoint = '{base_url}/v1/plugins/results'.format(base_url=self.base_url)
     self.metadata = {
         "version": "<runner version>",
         "os": "redhat8",
@@ -35,7 +38,7 @@ class Runner(object):
         "version" : plugin.version,
         "timestamp": strftime('%Y-%m-%dT%H:%M:%S%z', gmtime(time()) ),
         "labels" : labels,
-        "product_id": product_id,
+        "product_ids": product_id.split(','),
         "successful": success,
         "results": results,
         "metadata": self.metadata
