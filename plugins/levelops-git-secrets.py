@@ -118,10 +118,10 @@ def validate_args(options, f_targets):
       log.error("To use --csv or --json pass either the --print-results flag (to print to the console) or the --out flag (to write to a file).")
       sys.exit(1)
   if not options.docker and not options.local:
-    log.error("A excecution mode is needed. Please select either --docker or --local")
+    log.error("An execution mode is needed. Please select either --docker or --local")
     sys.exit(1)
   if options.docker and options.local:
-    log.error("Only one excecution mode can be specified per invocation (--docker or --local).")
+    log.error("Only one execution mode can be specified per invocation (--docker or --local).")
     sys.exit(1)
 
   if len(f_targets) < 1:
@@ -295,21 +295,25 @@ if __name__ == "__main__":
       if success: 
         handle_output(formats, outputs, output_location, results)
   except Exception as e:
-    log.error("Couldn't successfully complete the scanning: %s", e, exc_info=True)
-    results = str(e)
+    message = "Couldn't successfully complete the scanning: %s", e
+    log.error(message, exc_info=True)
+    results = message
   except:
     error = sys.exc_info()
-    log.error("Couldn't successfully complete the scanning: %s - %s", error[0], error[1], error[2])
-    results = str(e)
+    message = "Couldn't successfully complete the scanning: %s - %s" % (error[0], error[1])
+    log.error(message, error[2])
+    results = message
   finally:
     end_time = time.time()
     if options.submit:
-      # post success or failure to levelops
-      for key in results:
-        result = results[key]
-        labels = {'repo_name': [result['project_name']]}
-        if options.labels and type(options.labels) == dict:
-          labels.update(options.labels)
+      # post success or failure to levelopsfor key in results:
+      labels = options.labels if options.labels and type(options.labels) == dict else {}
+      if type(results) is not dict:
+        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+      else:
+        for key in results:
+          result = results[key]
+          labels.update({'project_name': [result['project_name']]})
         runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
   if success:
     sys.exit(0)
