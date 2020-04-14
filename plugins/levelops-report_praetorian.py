@@ -211,9 +211,10 @@ def finding_starts_with(line: str, titles: dict):
   partial = True
   test_line = line.lower()
   for title in titles:
-    if title == test_line:
+    tmp = title.split(' - ')[0]
+    if tmp == test_line:
       return titles[title], not partial
-    if title.startswith(test_line):
+    if tmp.startswith(test_line):
       return titles[title], partial
   return None, not partial
 
@@ -234,37 +235,42 @@ def is_at_service_valuation(line: str):
   return 'Service' == line
 
 
-def is_end_of_service_valuation(prev_line: str):
-  return 'Grade' == prev_line
+def is_end_of_service_valuation(line: str, prev_line: str):
+  return 'The following table describes the security posture of each grade level.' == line.strip()
 
 
 def process_service_valuation(lines: list):
+  service = []
+  set_service = False
+  security = []
+  set_security = False
+  grade = []
+  set_grade = False
   for line in lines:
     if line == 'Service':
       set_service = True
       continue
     if line == 'Security':
       set_security = True
+      set_service = False
       continue
     if line == 'Grade':
       set_grade = True
-      continue
-    if set_service:
-      service = line
-      set_service = False
-      continue
-    if set_security:
-      security = line
       set_security = False
       continue
-    if set_grade:
-      grade = line
-      set_grade = False
+
+    if set_service:
+      service.append(line)
       continue
+    if set_security:
+      security.append(line)
+      continue
+    if set_grade:
+      grade.append(line)
   return {
-    'service': service, 
-    'security': security, 
-    'grade': grade, 
+    'service': ','.join(service), 
+    'security': ','.join(security), 
+    'grade': ','.join(grade), 
     'issues_summary': {}, 
     'assesments': {
       'web_application_assesment': {}
@@ -274,6 +280,10 @@ def process_service_valuation(lines: list):
 
 def is_at_vuln_table_page(line: str):
   return 'Current State Analysis' == line
+
+
+def is_at_end_of_vuln_table_section(line:str):
+  return 'WEB APPLICATION ASSESSMENT' == line
 
 
 def is_start_of_table(lines: list):
@@ -335,9 +345,10 @@ def is_findings_summary_section(line: str):
   return False
 
 
-def is_end_findings_summary(line: str, previous_marker_seen: bool):
-  new_marker_seen = line == 'Critical Risk Findings'
-  return new_marker_seen and previous_marker_seen, new_marker_seen or previous_marker_seen
+def is_end_findings_summary(line: str, section_contents: dict):
+  if line in section_contents and line.endswith(' Risk Findings'):
+    return True
+  return False
 
 
 def normalize_finding_name(line: str):
@@ -510,6 +521,7 @@ def parse_output(output: str):
     is_table_number_first_match = True
     at_end_of_table = False
     done_executive_conclusion = False
+    issues_summary = []
     for line in text.readlines():
       line = line.strip()
       if len(line) <= 0:
@@ -537,9 +549,9 @@ def parse_output(output: str):
       if at_executive_conclusion and not at_service_valuation:
         continue
       elif at_service_valuation:
-        at_end_of_service_valuation = is_end_of_service_valuation(prev_line)
+        at_end_of_service_valuation = is_end_of_service_valuation(line, prev_line)
         if at_end_of_service_valuation:
-          section_contents.append(line)
+          # section_contents.append(line)
           result = process_service_valuation(section_contents)
           section_contents = []
           at_executive_conclusion = False
@@ -550,9 +562,13 @@ def parse_output(output: str):
         section_contents.append(line)
         continue
       # Detecting Vulneravilities Table
-      if at_end_of_service_valuation and not at_findings_summary and not at_vuln_table_page:
+      if at_end_of_service_valuation and not at_vuln_table_page and not at_findings_summary:
         at_vuln_table_page = is_at_vuln_table_page(line)
         continue
+      if at_vuln_table_page and not at_findings_summary and is_at_end_of_vuln_table_section(line):
+          at_vuln_table_page = False
+          result['issues_summary'] = issues_summary
+          continue
       if at_vuln_table_page and not at_table:
         section_contents.append(line)
         if not at_table:
@@ -569,10 +585,9 @@ def parse_output(output: str):
           else:
             at_end_of_table = is_at_end_of_table(section_contents, cat_table_count)
             if at_end_of_table:
-              result['issues_summary'].update(process_summary_by_category(section_contents))
+              issues_summary.append(process_summary_by_category(section_contents))
               section_contents = []
               at_table = False
-              at_vuln_table_page = False
               at_end_of_service_valuation = False
           continue
         section_contents.append(line)
@@ -582,17 +597,19 @@ def parse_output(output: str):
         at_findings_summary = True
         continue
       if at_findings_summary:
-        at_end_of_summary, findings_summary_marker_seen = is_end_findings_summary(line, findings_summary_marker_seen)
-        if at_end_of_summary:
+        at_end_of_summary = is_end_findings_summary(line, section_contents)
+        if not at_end_of_summary:
+          if line == 'Critical Risk Findings':
+            section_contents = []
+          section_contents.append(line)
+          continue
+        else:
           result['assesments']['web_application_assesment']['findings'], titles = process_findings_summary(section_contents)
           section_contents = []
           at_findings_summary = False
           at_findings = True
           capture_content = False
           continue
-        if findings_summary_marker_seen:
-          section_contents.append(line)
-        continue
       # start parsing the findings only if we are past the summary 
       if not at_findings:
         continue
@@ -714,7 +731,7 @@ if __name__ == "__main__":
 
       print(dumps(report, indent=2))
       p_name = report.get('service','default')
-      results[f_target] = {p_name: {'project_name': p_name, 'results': report}}
+      results[f_target] = {'project_name': p_name, 'results': report}
       success = True
         # s.wait_and_finish()
         # success = s.are_all_successes()
