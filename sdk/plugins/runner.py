@@ -27,7 +27,7 @@ class Runner(object):
         "available_memory": "4GB"
     }
 
-  def submit(self, plugin: Plugin, product_id: str, success: bool, results: dict, labels: dict, elapsed_time: int, token: str = None):
+  def submit(self, plugin: Plugin, product_id: str, success: bool, results: dict, labels: dict, elapsed_time: int, token: str = None, tags: list = None):
     self.metadata['execution'] = elapsed_time
     # for key in results:
     #   if not data[key]:
@@ -38,6 +38,7 @@ class Runner(object):
         "version" : plugin.version,
         "timestamp": strftime('%Y-%m-%dT%H:%M:%S%z', gmtime(time()) ),
         "labels" : labels,
+        "tags" : tags,
         "product_ids": product_id.split(','),
         "successful": success,
         "results": results,

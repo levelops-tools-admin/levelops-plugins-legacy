@@ -114,9 +114,6 @@ def load_json_resource(r_path):
     return loads(resource)
 
 
-
-
-
 def validate_args(options, f_targets):
   if options.debug:
       log.setLevel('DEBUG')
@@ -148,10 +145,10 @@ def get_options():
 def handle_output(options, results):
     if options.json:
       if options.print_results:
-        log.info(dumps(results, indent=2))
+        log.info(dumps(results, indent=2, escape_forward_slashes=False))
       if options.output_file:
         with open(options.output_file, 'w') as f:
-          dump(results, f, indent=2)
+          dump(results, f, indent=2, escape_forward_slashes=False)
 
     elif options.csv:
       if options.print_results:
@@ -211,7 +208,7 @@ if __name__ == "__main__":
     end_time = time.time()
     if options.submit:
       # post failure to levelops
-      runner.submit(success=success, results=results, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=options.labels)
+      runner.submit(success=success, results=results, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=options.labels, tags=options.tags)
   if success:
     sys.exit(0)
   else:

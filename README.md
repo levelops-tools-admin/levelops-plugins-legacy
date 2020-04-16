@@ -7,6 +7,14 @@
 - [Installation](#installation)
 - [Modes of Operation](#modes-of-operation)
 - [LevelOps Plugins](#levelops-plugins)
+- [LevelOps GCloud Reporter](#levelops-gcloud-reporter)
+  - [Description](#description)
+  - [Permissions](#permissions)
+  - [Supported Services](#supported-services)
+  - [Requirements](#requirements)
+    - [GCP](#gcp)
+    - [Software and tools](#software-and-tools)
+  - [Steps](#steps)
 - [Request plugins for new use cases](#request-plugins-for-new-use-cases)
 
 
@@ -19,11 +27,11 @@ LevelOps Plugins are licensed under Apache License, Version 2
 # Installation
 
       mkdir -p ~/tools/levelops
-      git clone --depth 1 git@github.com:levelops/tools-levelops.git ~/tools/levelops
+      git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins ~/tools/levelops
       pip install virtualenv
       mkdir -p ~/tools/levelops/env
       virtualenv -p /usr/bin/python3 ~/tools/levelops/env
-      source ~/tools/levelop/env/bin/activate
+      source ~/tools/levelops/env/bin/activate
       pip install -r ~/tools/levelops/requirements.txt
 
 # Modes of Operation
@@ -284,7 +292,166 @@ LevelOps Plugins are licensed under Apache License, Version 2
     
    </td>
   </tr>
+  <tr>
+    <td><p>LevelOps GitSecret Plugin</p></td>
+    <td>Source Code Audit</td>
+    <td><p>Use this tool to easily run git-secrets in your source code to find sensitive information like aws credentials.</p><br /> Recommended Use Cases: <br /> <ul><li>Code pre-commit validation</li><li>Pull request pre-merge validation</li><li>CI/CD Workflow</li></ul></td>
+    <td><ul>
+      <li>--<!-- [json](samples/levelops-git-secrets.json)  --></li>
+      <li>--<!-- [csv](samples/levelops-git-secrets.csv) --></li>
+    </ul></td>
+    <td>
+    <b>Standalone mode:</b>
+
+      # Run the scripts and write the results to a file.
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --json
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --csv
+
+      # Run the scripts and write the results to the console.
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --print-results
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --print-results --json
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --print-results --csv
+      
+   <b>Connected mode:</b>
+
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --submit -p 23 --token <api token>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --print-results --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --json --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --csv --submit -p 23  --token <api token>
+
+      Email support@levelops.io to get an evaluation account and API Token
+   </td>
+  </tr>
+  <tr>
+    <td><p>LevelOps Brakeman Plugin</p></td>
+    <td>Source Code Audit</td>
+    <td><p>Use this tool to easily run brakeman in your source code to find security vulnerabilities.</p><br /> Recommended Use Cases: <br /> <ul><li>Code pre-commit validation</li><li>Pull request pre-merge validation</li><li>CI/CD Workflow</li></ul></td>
+    <td><ul>
+      <li>--<!-- [json](samples/levelops-brakeman.json)  --></li>
+      <li>--<!-- [csv](samples/levelops-brakeman.csv) --></li>
+    </ul></td>
+    <td>
+    <b>Standalone mode:</b>
+
+      # Run the scripts and write the results to a file.
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --json
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --csv
+
+      # Run the scripts and write the results to the console.
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --print-results
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --print-results --json
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --print-results --csv
+      
+   <b>Connected mode:</b>
+
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --submit -p 23 --token <api token>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --print-results --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --json --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --csv --submit -p 23  --token <api token>
+
+      Email support@levelops.io to get an evaluation account and API Token
+   </td>
+  </tr>
+  <tr>
+    <td><p>LevelOps Praetorian Report Plugin</p></td>
+    <td>Security Audit</td>
+    <td><p>Use this tool to easily convert a praetorian pdf report into structured data.</p><br /> Recommended Use Cases: <br /> <ul><li>Security Audit</li><li>Security Tracking</li></ul></td>
+    <td><ul>
+      <li>--<!-- [json](samples/levelops-git-secrets.json)  --></li>
+      <li>--<!-- [csv](samples/levelops-git-secrets.csv) --></li>
+    </ul></td>
+    <td>
+    <b>Standalone mode:</b>
+
+      # Run the scripts and write the results to a file.
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --out <output file>
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --out <output file> --json
+
+      # Run the scripts and write the results to the console.
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --print-results
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --print-results --json
+      
+   <b>Connected mode:</b>
+
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --submit -p 23 --token <api token>
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --print-results --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --out <output file> --json --submit -p 23  --token <api token>
+
+      Email support@levelops.io to get an evaluation account and API Token
+   </td>
+  </tr>
+  <tr>
+    <td><p>LevelOps Microsoft Threat Modeling Tool Plugin</p></td>
+    <td>Security Audit</td>
+    <td><p>Use this tool to easily convert a microsft threat modeling tool report into json data for easy changes tracking.</p><br /> Recommended Use Cases: <br /> <ul><li>Security Audit</li><li>Security Tracking</li></ul></td>
+    <td><ul>
+      <li>--<!-- [json](samples/levelops-git-secrets.json)  --></li>
+      <li>--<!-- [csv](samples/levelops-git-secrets.csv) --></li>
+    </ul></td>
+    <td>
+    <b>Standalone mode:</b>
+
+      # Run the scripts and write the results to a file.
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --out <output file>
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --out <output file> --json
+
+      # Run the scripts and write the results to the console.
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --print-results
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --print-results --json
+      
+   <b>Connected mode:</b>
+
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --submit -p 23 --token <api token>
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --print-results --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --out <output file> --json --submit -p 23  --token <api token>
+
+      Email support@levelops.io to get an evaluation account and API Token
+   </td>
+  </tr>
 </table>
+
+# LevelOps GCloud Reporter
+## Description
+The tool generates a report of running GCP resources per project and a global summary.
+The GCP resources collected depend on the permissions of the user executing the script and on the enabled APIs on each of the projects.
+
+## Permissions
+The tool expects at least read only access for the supported services for every project to be scanned. It also expects to have APIs enabled for all the supported services.
+
+
+## Supported Services
+- bigtable
+- compute
+- dataflow
+- dataproc
+- filestore
+- gke
+- kms
+- redis
+- sql
+- pubsub
+
+## Requirements
+
+### GCP
+The user executing the tool should have access to GCP projects and services.
+
+### Software and tools
+- python >= 3.6
+- gcloud cli 
+
+## Steps
+1.- Ensure gcloud cli is in the path and is authorized.
+   >
+      gcloud auth login
+
+2.- Complete the plugins [installation](#installation).
+
+3.- Run the levelops gcloud reporting tool, the tool will autogenerate a directory with the results.
+   >
+      .~/tools/levelops/levelops-gcloud.py
 
 # Request plugins for new use cases
 
