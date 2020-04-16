@@ -63,8 +63,8 @@ def handle_output(formats, outputs, output_location, reslults):
     generate_destination = False
     destination = output_location
   for target in results:
-    result = results[target]['results']
-    project_name = results[target]['project_name']
+    result = results[target]
+    project_name = result['project_name']
     for format in formats:
       if "print" in outputs:
         if multiformat:
@@ -75,7 +75,7 @@ def handle_output(formats, outputs, output_location, reslults):
           print("-------------------------")
           print("")
         if format == "json":
-          print(dumps(result, indent=2))
+          print(dumps(result, indent=2, escape_forward_slashes=False))
         if format == "csv":
           print("type,commit,file_name,secret,lines")
           for file_name in result['hits']:
@@ -97,7 +97,7 @@ def handle_output(formats, outputs, output_location, reslults):
 
         with open(destination, 'w') as out:
           if format == "json":
-            dump(result, out, indent=2)
+            dump(result, out, indent=2, escape_forward_slashes=False)
           if format == "csv":
             out.write("type,commit,file_name,secret,lines\n")
             for file_name in result['hits']:
@@ -160,8 +160,14 @@ def parse_report(report_file: str):
     html = contents.read()
   parser = BeautifulSoup(html, 'html.parser')
   threats = {x.h4.attrs['id'].strip(): parse_threat(x) for x in parser.find_all('div', attrs={'class':'threat'})}
-  report = parse_summary(parser)
-  report['threats'] = classify_threats(threats)
+  summary, totals = parse_summary(parser)
+  report = {
+    "summary": {summary['threat_model_name']: totals},
+    "metadata": summary,
+    "data": threats,
+    "aggregations": {}
+    }
+  report['aggregations'].update({summary['threat_model_name']: classify_threats(threats)})
   return report
 
 
@@ -206,8 +212,7 @@ def parse_summary(parser: BeautifulSoup):
       value = next_summary_element(tmp)
       log.debug(value)
       totals[normalize_field_name(tmp.text)] = value.string.strip() if value.string else ''
-  summary['totals'] = totals
-  return summary
+  return summary, totals
 
 
 def next_summary_element(element: element.Tag):
@@ -233,14 +238,19 @@ def parse_threat(threat: element.Tag):
 
 
 def classify_threats(threats: dict):
-  classified = {}
+  by_state = {}
+  by_priority = {}
   for key in threats:
     threat = threats[key]
-    priority = threat['priority']
-    group = classified.get(priority, {})
-    group[key] = threat
-    classified[priority] = group
-  return classified
+    priority = normalize_field_name(threat['priority'])
+    p_count = by_priority.get(priority, 0)
+    p_count += 1
+    by_priority[priority] = p_count
+    state = normalize_field_name(threat['state'])
+    s_count = by_state.get(state, 0)
+    s_count += 1
+    by_state[state] = s_count
+  return {'by_priority': by_priority, 'by_state': by_state}
 
 
 if __name__ == "__main__":
@@ -274,10 +284,11 @@ if __name__ == "__main__":
 
       report = parse_report(report_file=f_target)
 
-      print(dumps(report, indent=2))
+      # print(dumps(report, indent=2, escape_forward_slashes=False))
 
-      p_name = report.get('threat_model_name','default')
-      results[f_target] = {p_name: {'project_name': p_name, 'results': report}}
+      p_name = report['metadata'].get('threat_model_name','default')
+      report['project_name'] = p_name
+      results[f_target] = report
       success = True
         # s.wait_and_finish()
         # success = s.are_all_successes()
@@ -298,12 +309,12 @@ if __name__ == "__main__":
       # post success or failure to levelopsfor key in results:
       labels = options.labels if options.labels and type(options.labels) == dict else {}
       if type(results) is not dict:
-        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels, tags=options.tags)
       else:
         for key in results:
           result = results[key]
           labels.update({'project_name': [result['project_name']]})
-          runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+          runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels, tags=options.tags)
   if success:
     sys.exit(0)
   else:

@@ -223,12 +223,12 @@ if __name__ == "__main__":
       # post success or failure to levelopsfor key in results:
       labels = options.labels if options.labels and type(options.labels) == dict else {}
       if type(results) is not dict:
-        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels, tags=options.tags)
       else:
         for key in results:
           result = results[key]
-          labels.update({'project_name': [result['project_name']]})
-        runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+          labels.update({'project_name': [key]})
+          runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels, tags=options.tags)
   if success:
     sys.exit(0)
   else:

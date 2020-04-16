@@ -109,8 +109,8 @@ def handle_output(formats, outputs, output_location, reslults):
     generate_destination = False
     destination = output_location
   for target in results:
-    result = results[target]['results']
-    project_name = results[target]['project_name']
+    result = results[target]
+    project_name = result['project_name']
     for format in formats:
       if "print" in outputs:
         if multiformat:
@@ -153,6 +153,36 @@ def handle_output(formats, outputs, output_location, reslults):
               for file_name in result['historic'][commit]:
                 for match in result['historic'][commit][file_name]:
                   out.write("historic,%s,%s,%s,\"%s\"\n" % (commit, file_name, match, ','.join(result['historic'][commit][file_name][match]['lines'])))
+
+
+def normalize_report(report: dict):
+  findings = {}
+  for a_key in report['assesments']:
+    for s_key in report['assesments'][a_key]['findings']:
+      for f_key in report['assesments'][a_key]['findings'][s_key]:
+        finding_name = f_key
+        count = 0
+        while finding_name in findings:
+          finding_name = f_key + '_' + str(count)
+          count += 1
+        findings[finding_name] = report['assesments'][a_key]['findings'][s_key][f_key]
+  summary = {}
+  aggregations = {}
+  count = 0
+  for item in report['issues_summary']:
+    summary['assessment_' + str(count)] = item
+    aggregations['assessment_' + str(count)] = {'by_category': item.pop('by_categories')}
+    count += 1
+  return {
+    "data": findings,
+    "summary": summary,
+    "aggregations": aggregations,
+    "metadata": {
+      "service": report['service'],
+      "security": report['security'],
+      "grade": report['grade']
+    }
+  }
 
 
 def validate_args(options, f_targets):
@@ -395,18 +425,21 @@ def text_processor(lines: list):
 
 
 def category_processor(lines: list):
-  if True:
-    return {}
+  # if True:
+  #   return {}
   reading_values = False
   set_cat = False
   set_wasc = False
   set_cwe = False
   set_sans = False
   set_owasp = False
+  CAT_HEADER_END = 'OWASP Top 10'
+  CAT_HEADER_END_ALT = 'SANS Top 25 OWASP Top 10'
   for line in lines:
-    if not reading_values and line != 'OWASP Top 10':
+    # in some cases the last 2 columns of the category table are extracted togheter
+    if not reading_values and line != CAT_HEADER_END and line != CAT_HEADER_END_ALT:
       continue
-    elif line != 'OWASP Top 10':
+    elif line == CAT_HEADER_END or line == CAT_HEADER_END_ALT:
       reading_values = True
       set_cat = True
       continue
@@ -424,7 +457,7 @@ def category_processor(lines: list):
     if set_cwe:
       cwe = line
       set_cwe = False
-      set_snas = True
+      set_sans = True
       continue
     if set_sans:
       sans = line
@@ -729,9 +762,13 @@ if __name__ == "__main__":
 
       report = parse_output(output=output_file)
 
-      print(dumps(report, indent=2))
+      # print(dumps(report, indent=2, escape_forward_slashes=False))
+      
+      result = normalize_report(report)
+
       p_name = report.get('service','default')
-      results[f_target] = {'project_name': p_name, 'results': report}
+      result['project_name'] = p_name
+      results[f_target] = result
       success = True
         # s.wait_and_finish()
         # success = s.are_all_successes()
@@ -752,12 +789,12 @@ if __name__ == "__main__":
       # post success or failure to levelopsfor key in results:
       labels = options.labels if options.labels and type(options.labels) == dict else {}
       if type(results) is not dict:
-        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+        runner.submit(success=success, results={"output": results}, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels, tags=options.tags)
       else:
         for key in results:
           result = results[key]
           labels.update({'project_name': [result['project_name']]})
-          runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels)
+          runner.submit(success=success, results=result, product_id=options.product, token=options.token, plugin=plugin, elapsed_time=(end_time - start_time), labels=labels, tags=options.tags)
   if success:
     sys.exit(0)
   else:
