@@ -13,7 +13,7 @@ print_help(){
     echo ""
     echo ""
     echo "Usage:"
-    echo "         ./autosestup.sh /path/to/installation/dir"
+    echo "         ./autosetup.sh /path/to/installation/dir"
     echo ""
     echo "Options:"
     echo ""

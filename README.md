@@ -5,6 +5,9 @@
 - [What are LevelOps Plugins?](#what-are-levelops-plugins)
 - [Software License](#software-license)
 - [Installation](#installation)
+  - [With Auto Installation Script](#with-auto-installation-script)
+  - [Step By Step](#step-by-step)
+  - [Aditional dependencies](#aditional-dependencies)
 - [Modes of Operation](#modes-of-operation)
 - [LevelOps Plugins](#levelops-plugins)
 - [LevelOps GCP Service Discovery](#levelops-gcp-service-discovery)
@@ -25,16 +28,24 @@ LevelOps Plugins are standalone tools, written in Python 3.6 to help developers 
 LevelOps Plugins are licensed under Apache License, Version 2
 
 # Installation
+## With Auto Installation Script
+
+      curl https://raw.githubusercontent.com/levelops-tools-admin/levelops-plugins/master/autosetup.sh -s -o /tmp/autosetup.sh && chmod +x /tmp/autosetup.sh && /tmp/autosetup.sh
+
+## Step By Step
 
       mkdir -p ~/tools/levelops
       git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins ~/tools/levelops
       cd ~/tools/levelops
       pip install virtualenv # in some environments pip3 is available instead of pip
       mkdir -p env
-      virtualenv env # For MAC and linux if python 3 is the default python
-      virtualenv -p /usr/bin/python3 env # Example to specify the python3 binary
+      virtualenv env # If python 3 is not the default python 'virtualenv -p /usr/bin/python3 env' to specify the path to the python 3 binary
       source env/bin/activate
       pip install -r requirements.txt
+
+## Aditional dependencies
+
+The GCP Service Discovery Tool requires the gcloud cli to be installed and accesible in the path. Please follow Google's instructions to install the gcloud cli which can be found [here](https://cloud.google.com/sdk/docs#install_the_latest_cloud_tools_version_cloudsdk_current_version).
 
 # Modes of Operation
 **Standalone Mode:** Use this mode, to test the plug-in locally. The plug-in will output the results locally.  
@@ -453,7 +464,7 @@ The user executing the tool should have access to GCP projects and services.
 
 3.- Run the levelops gcloud reporting tool, the tool will autogenerate a directory with the results.
    >
-      .~/tools/levelops/levelops-gcloud.py
+      .~/tools/levelops/plugins/levelops-gcloud.py
 
 # Request plugins for new use cases
 
