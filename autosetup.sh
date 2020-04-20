@@ -19,6 +19,29 @@ print_help(){
     echo ""
     echo "    -h   --help     Prints this help."
 }
+install_plugins(){
+    echo ""
+    header
+    echo "Installing the LevelOps Plugins at '${INSTALLATION_DIR}'"
+    echo ""
+    echo ""
+    echo "....................."
+    echo ""
+    # exit 0
+
+    mkdir -p ${INSTALLATION_DIR}
+    git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins ${INSTALLATION_DIR}
+    if pip3;
+    then
+        pip3 install virtualenv # in some environments pip3 is available instead of pip
+    else
+        pip install virtualenv
+    fi
+    mkdir -p ${INSTALLATION_DIR}/env
+    virtualenv ${INSTALLATION_DIR}/env
+    source ${INSTALLATION_DIR}/env/bin/activate
+    pip install -r ${INSTALLATION_DIR}/requirements.txt
+}
 
 if [ $# -lt 1 ];
 then
@@ -43,24 +66,4 @@ then
     exit 1
 fi
 
-echo ""
-header
-echo "Installing the LevelOps Plugins at '${INSTALLATION_DIR}'"
-echo ""
-echo ""
-echo "....................."
-echo ""
-# exit 0
-
-mkdir -p ${INSTALLATION_DIR}
-git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins ${INSTALLATION_DIR}
-if pip3;
-then
-    pip3 install virtualenv # in some environments pip3 is available instead of pip
-else
-    pip install virtualenv
-fi
-mkdir -p ${INSTALLATION_DIR}/env
-virtualenv -p /usr/bin/python3 ${INSTALLATION_DIR}/env
-source ${INSTALLATION_DIR}/env/bin/activate
-pip install -r ${INSTALLATION_DIR}/requirements.txt
+install_plugins

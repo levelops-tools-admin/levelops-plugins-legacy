@@ -7,7 +7,7 @@
 - [Installation](#installation)
 - [Modes of Operation](#modes-of-operation)
 - [LevelOps Plugins](#levelops-plugins)
-- [LevelOps GCloud Reporter](#levelops-gcloud-reporter)
+- [LevelOps GCP Service Discovery](#levelops-gcp-service-discovery)
   - [Description](#description)
   - [Permissions](#permissions)
   - [Supported Services](#supported-services)
@@ -28,11 +28,13 @@ LevelOps Plugins are licensed under Apache License, Version 2
 
       mkdir -p ~/tools/levelops
       git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins ~/tools/levelops
+      cd ~/tools/levelops
       pip install virtualenv # in some environments pip3 is available instead of pip
-      mkdir -p ~/tools/levelops/env
-      virtualenv -p /usr/bin/python3 ~/tools/levelops/env
-      source ~/tools/levelops/env/bin/activate
-      pip install -r ~/tools/levelops/requirements.txt
+      mkdir -p env
+      virtualenv env # For MAC and linux if python 3 is the default python
+      virtualenv -p /usr/bin/python3 env # Example to specify the python3 binary
+      source env/bin/activate
+      pip install -r requirements.txt
 
 # Modes of Operation
 **Standalone Mode:** Use this mode, to test the plug-in locally. The plug-in will output the results locally.  
@@ -254,7 +256,7 @@ LevelOps Plugins are licensed under Apache License, Version 2
   <tr>
     <td><p>GCP Service Discovery</p></td>
     <td>Cloud Service Discovery</td>
-    <td><p>Use this tool to discover services used in multiple GCP Projects and Services deployed within GKE</p><br /> Recommended Use Cases: <br /> <ul><li>New Service Discovery and Workflows</li><li>Resource and PaaS Ownership Discovery Workflows</li><li>Resource Utilization Discovery Workflows</li></ul></td>
+    <td><p>Use this tool to discover services used in multiple GCP Projects and Services deployed within GKE. [Aditional Information](#levelops-gcp-service-discovery)</p><br /> Recommended Use Cases: <br /> <ul><li>New Service Discovery and Workflows</li><li>Resource and PaaS Ownership Discovery Workflows</li><li>Resource Utilization Discovery Workflows</li></ul></td>
     <td><ul><li>
 
 [json](samples/gcp_service_discovery) 
@@ -412,7 +414,7 @@ LevelOps Plugins are licensed under Apache License, Version 2
   </tr>
 </table>
 
-# LevelOps GCloud Reporter
+# LevelOps GCP Service Discovery
 ## Description
 The tool generates a report of running GCP resources per project and a global summary.
 The GCP resources collected depend on the permissions of the user executing the script and on the enabled APIs on each of the projects.
