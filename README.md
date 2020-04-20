@@ -28,7 +28,7 @@ LevelOps Plugins are licensed under Apache License, Version 2
 
       mkdir -p ~/tools/levelops
       git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins ~/tools/levelops
-      pip install virtualenv
+      pip install virtualenv # in some environments pip3 is available instead of pip
       mkdir -p ~/tools/levelops/env
       virtualenv -p /usr/bin/python3 ~/tools/levelops/env
       source ~/tools/levelops/env/bin/activate
