@@ -86,10 +86,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --token <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -120,10 +120,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --token <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -154,10 +154,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --token <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -188,10 +188,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --token <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -222,10 +222,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --token <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -256,10 +256,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --token <api token>
-      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --token <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --print-results --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --json --submit --apikey <api token>
+      ~/tools/levelops/plugins/api_discovery_<...>.py <path to source code directory> --out <output file> --csv --submit --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -308,7 +308,7 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
   <tr>
     <td><p>LevelOps GitSecret Plugin</p></td>
     <td>Source Code Audit</td>
-    <td><p>Use this tool to easily run git-secrets in your source code to find sensitive information like aws credentials.</p><br /> Recommended Use Cases: <br /> <ul><li>Code pre-commit validation</li><li>Pull request pre-merge validation</li><li>CI/CD Workflow</li></ul></td>
+    <td><p>Use this tool to easily run git-secrets in your source code to find sensitive information like aws credentials.</p><br /> Recommended Use Cases: <br /> <ul><li>Code pre-commit validation</li><li>Pull request pre-merge validation</li><li>CI/CD Workflow</li></ul><br /> Pre-requirements:<ul><li>Docker for --docker mode</li><li>git-secrets for --local mode</li></ul></td>
     <td><ul>
       <li>--<!-- [json](samples/levelops-git-secrets.json)  --></li>
       <li>--<!-- [csv](samples/levelops-git-secrets.csv) --></li>
@@ -328,10 +328,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --submit -p 23 --token <api token>
-      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --print-results --submit -p 23  --token <api token>
-      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --json --submit -p 23  --token <api token>
-      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --csv --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --submit -p 23 --apikey <api token>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --print-results --submit -p 23  --apikey <api token>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --json --submit -p 23  --apikey <api token>
+      ~/tools/levelops/plugins/levelops-git-secrets.py <path to source code directory> --out <output file> --csv --submit -p 23  --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -339,7 +339,7 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
   <tr>
     <td><p>LevelOps Brakeman Plugin</p></td>
     <td>Source Code Audit</td>
-    <td><p>Use this tool to easily run brakeman in your source code to find security vulnerabilities.</p><br /> Recommended Use Cases: <br /> <ul><li>Code pre-commit validation</li><li>Pull request pre-merge validation</li><li>CI/CD Workflow</li></ul></td>
+    <td><p>Use this tool to easily run brakeman in your source code to find security vulnerabilities.</p><br /> Recommended Use Cases: <br /> <ul><li>Code pre-commit validation</li><li>Pull request pre-merge validation</li><li>CI/CD Workflow</li></ul><br /> Pre-requirements:<ul><li>Docker for --docker mode</li><li>brakeman gem (gem install brakeman) for --gem mode</li></ul></td>
     <td><ul>
       <li>--<!-- [json](samples/levelops-brakeman.json)  --></li>
       <li>--<!-- [csv](samples/levelops-brakeman.csv) --></li>
@@ -359,10 +359,10 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --submit -p 23 --token <api token>
-      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --print-results --submit -p 23  --token <api token>
-      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --json --submit -p 23  --token <api token>
-      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --csv --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --submit -p 23 --apikey <api token>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --print-results --submit -p 23  --apikey <api token>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --json --submit -p 23  --apikey <api token>
+      ~/tools/levelops/plugins/levelops-brakeman.py <path to source code directory> --out <output file> --csv --submit -p 23  --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -388,9 +388,9 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --submit -p 23 --token <api token>
-      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --print-results --submit -p 23  --token <api token>
-      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --out <output file> --json --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --submit -p 23 --apikey <api token>
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --print-results --submit -p 23  --apikey <api token>
+      ~/tools/levelops/plugins/levelops-report_praetorian.py <path to pdf report> --out <output file> --json --submit -p 23  --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
@@ -416,9 +416,9 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
       
    <b>Connected mode:</b>
 
-      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --submit -p 23 --token <api token>
-      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --print-results --submit -p 23  --token <api token>
-      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --out <output file> --json --submit -p 23  --token <api token>
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --submit -p 23 --apikey <api token>
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --print-results --submit -p 23  --apikey <api token>
+      ~/tools/levelops/plugins/levelops-report_ms_tmt.py <path to htm report file> --out <output file> --json --submit -p 23  --apikey <api token>
 
       Email support@levelops.io to get an evaluation account and API Token
    </td>
