@@ -30,10 +30,11 @@ class ToolRunner(object):
         self.everything_ok = True
         self.errors = []
         self.error_codes = set()
-        self.error_codes.update(ERRORS)
         self.keep_tmp_files = keep_tmp_files
         if error_codes:
             self.error_codes.update(error_codes)
+        else:
+            self.error_codes.update(ERRORS)
 
     def scan_directory(self, base_path: str, params: dict, tmp_location: str):
         """ Scans a directory.

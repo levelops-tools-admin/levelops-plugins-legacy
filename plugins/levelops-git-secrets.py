@@ -262,17 +262,20 @@ if __name__ == "__main__":
 
   installation_type = "new"
   if options.local:
-    cmd = "git secrets {options}"
+    script = os.path.abspath(os.path.join(parentdir, 'docker/git-secrets/levelops-git-secrets.sh'))
+    cmd = "{script} {options} {base_path}"
     # brakeman_output_dir = reports_tmp
     # output_files = get_output_files(brakeman_output_dir, formats)
-    params = {"options": "--scan --no-index"}
-    params_historic = {"options": "--scan-historic"}
+    params = {"options": "{installation_type} current".format(installation_type=installation_type), "script": script}
+    params_historic = {"options": "{installation_type} historic".format(installation_type=installation_type), "script": script}
+    error_codes = set([2])
   if options.docker:
     cmd = 'bash -c "docker run --rm -v {base_path}:/code --user $(id -u):$(id -g) levelops/levelops-git-secrets /bin/levelops-git-secrets {options} /code"'
     # brakeman_output_dir = "/reports"
     # output_files = get_output_files(brakeman_output_dir, formats)
     params = {"options": "{installation_type} current".format(installation_type=installation_type)}
     params_historic = {"options": "{installation_type} historic".format(installation_type=installation_type)}
+    error_codes = set([1,126, 127, 128, 130, 137, 139, 143])
 
 
   success = False
@@ -281,7 +284,7 @@ if __name__ == "__main__":
   p_names = set()
   results = {}
   try:
-    with ToolRunner(command=cmd, max_concurrent=3, error_codes=set([1,126, 127, 128, 130, 137, 139, 143])) as s:
+    with ToolRunner(command=cmd, max_concurrent=3, error_codes=error_codes) as s:
       for f_target in f_targets:
         log.info("scanning path: %s" % f_target)
         project_name, output, errors = s.scan_directory(base_path=f_target, params=params, tmp_location=reports_tmp)
