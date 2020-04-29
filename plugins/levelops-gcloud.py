@@ -18,15 +18,22 @@ from sys import exit
 from threading import Thread
 from time import sleep
 from uuid import uuid4
+from io import StringIO
 
 from kubernetes import client as k_client
 from kubernetes import config as k_config
 from kubernetes.client.configuration import Configuration
 from kubernetes.client.rest import ApiException
-from ujson import dump as jdump
-from ujson import dumps
-from ujson import load as jload
-from ujson import loads
+try:
+    from ujson import dump as jdump
+    from ujson import dumps
+    from ujson import load as jload
+    from ujson import loads
+except:
+    from json import dump as jdump
+    from json import dumps
+    from json import load as jload
+    from json import loads
 from yaml import dump as ydump
 from yaml import dump_all, full_load, full_load_all
 
@@ -356,10 +363,10 @@ def get_k8s_resources(report, cluster, project):
                 containers = [x.image for x in s.spec.template.spec.containers]
             else:
                 containers = [x.image for x in s.spec.template.spec.containers]
-            if kind == "Deployment" or kind == "Service":
+            if kind == "Deployment" or kind == "Service" or not s.metadata.labels:
                 _id = s.metadata.self_link
             else:
-                _id = s.metadata.self_link.replace('-'+s.metadata.labels['pod-template-hash'],'')
+                _id = s.metadata.self_link.replace('-'+s.metadata.labels.get('pod-template-hash',''),'')
             version = int(s.metadata.resource_version)
             ref = collection.get(_id, {"version": -1, "resource": None})
             if ref['version'] < version:
@@ -541,6 +548,24 @@ def process(report, threads, resources_threads, thread_queue_size, resources_thr
     wait_and_stop(name="resources", queue=r_queue, control=r_control, pool=r_pool)
 
 
+def del_nones(doc):
+    """
+    Delete keys with the value ``None`` in a dictionary, recursively.
+
+    This alters the input so you may wish to ``copy`` the dict first.
+    """
+    for key, value in list(doc.items()):
+        if value is None:
+            del doc[key]
+        elif isinstance(value, dict):
+            del_nones(value)
+        elif isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict):
+                    del_nones(item)
+    return doc
+
+
 p_control = Control()
 r_control = Control()
 
@@ -596,11 +621,13 @@ if __name__ == "__main__":
         project.paas = summary
         report_file = '%s/%s.json'%(target,project.name)
         with open(report_file, 'w') as f:
-            jdump(project, f, indent=2)
+            io = StringIO()
+            jdump(project, io)
+            jdump(del_nones(loads(io.getvalue())), f, indent=2, escape_forward_slashes=False)
 
     report_file = '%s/errors.json'%(target)
     with open(report_file, 'w') as f:
-        jdump(report.errors, f, indent=2)
+        jdump(report.errors, f, indent=2, escape_forward_slashes=False)
 
     json = {"total_orgs": len(report.orgs), "total_folders": len(report.folders), "total_projects": len(report.projects), "total_k8s_clusters": t_k8s_count}
     json["orgs"] = [x.name for x in report.orgs]
@@ -609,7 +636,7 @@ if __name__ == "__main__":
 
     report_file = '%s/global_summary.json'%(target)
     with open(report_file, 'w') as f:
-        jdump(json, f, indent=2)
+        jdump(del_nones(json.copy()), f, indent=2, escape_forward_slashes=False)
     
     log.info('')
     log.info('The report has been created at %s', target)
