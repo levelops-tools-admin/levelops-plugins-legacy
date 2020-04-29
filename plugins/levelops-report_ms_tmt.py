@@ -128,6 +128,8 @@ def validate_args(options, f_targets):
 def get_options():
   parser = ArgumentParser(prog="Levelops Microsoft Threat Modeling Tool Report Plugin.", usage="./levelops-" + levelops_plugin_name + ".py (optional <flags>) <directory to scan>")
   for parser_option in default_plugin_options:
+    if parser_option['kwords']['dest'] == 'csv': # CSV not supported for now
+      continue
     parser.add_argument(*parser_option['args'], **parser_option['kwords'])
 
   return parser.parse_known_args()
