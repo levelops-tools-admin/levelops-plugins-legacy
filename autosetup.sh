@@ -29,18 +29,19 @@ install_plugins(){
     echo ""
     # exit 0
 
-    mkdir -p ${INSTALLATION_DIR}
-    git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins ${INSTALLATION_DIR}
+    eval mkdir -p "${INSTALLATION_DIR}"
+    eval git clone --depth 1 https://github.com/levelops-tools-admin/levelops-plugins "${INSTALLATION_DIR}"
     if pip3;
     then
         pip3 install virtualenv # in some environments pip3 is available instead of pip
     else
         pip install virtualenv
     fi
-    mkdir -p ${INSTALLATION_DIR}/env
-    virtualenv ${INSTALLATION_DIR}/env
-    source ${INSTALLATION_DIR}/env/bin/activate
-    pip install -r ${INSTALLATION_DIR}/requirements.txt
+    eval mkdir -p "${INSTALLATION_DIR}"/env
+    eval virtualenv "${INSTALLATION_DIR}"/env
+    eval source "${INSTALLATION_DIR}"/env/bin/activate
+    pip install --upgrade pip
+    eval pip install -r "${INSTALLATION_DIR}"/requirements.txt
 }
 
 if [ $# -lt 1 ];

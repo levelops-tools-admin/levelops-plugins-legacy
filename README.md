@@ -28,6 +28,20 @@ LevelOps Plugins are standalone tools, written in Python 3.6 to help developers 
 LevelOps Plugins are licensed under Apache License, Version 2
 
 # Installation
+Python 3 needs to be installed and the python binaries path should be in present in the command line path.
+
+      > python -m site
+        sys.path = [
+            '/Library/Frameworks/Python.framework/Versions/3.7/lib/python37.zip',
+            '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7',
+            '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload',
+            '/Library/Frameworks/Python.framework/Versions/3.7/site-packages',
+        ]
+        USER_BASE: '/Users/user1/Library/Python/3.7' (exists)
+        USER_SITE: '/Users/user1/Library/Python/3.7/lib/python/site-packages' (doesn't exist)
+        ENABLE_USER_SITE: False
+
+      > export PATH=/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH
 ## With Auto Installation Script
 
       curl https://raw.githubusercontent.com/levelops-tools-admin/levelops-plugins/master/autosetup.sh -s -o /tmp/autosetup.sh && chmod +x /tmp/autosetup.sh && /tmp/autosetup.sh
