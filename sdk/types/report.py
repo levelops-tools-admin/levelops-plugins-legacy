@@ -7,6 +7,7 @@ class Report(object):
     if not apis:
       apis = set()
     self.apis = apis
+    self.project_name = ''
   
   def add_api(self, api):
     self.apis.add(api)
