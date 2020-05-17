@@ -12,6 +12,7 @@ COPY --from=base /install /usr/local
 
 COPY plugins/levelops-report_praetorian.py /app/plugins/
 COPY plugins/levelops-report_ms_tmt.py /app/plugins/
+COPY plugins/levelops-report_nccgroup.py /app/plugins/
 COPY sdk /app/sdk
 WORKDIR /app/plugins
 

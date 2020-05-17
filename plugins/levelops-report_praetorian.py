@@ -92,8 +92,8 @@ def get_formats_and_outputs(options):
   formats = []
   if options.json:
     formats.append("json")
-  if options.csv:
-    formats.append("csv")
+  # if options.csv:
+  #   formats.append("csv")
   outputs = []
   if options.output_file:
     outputs.append("file")
