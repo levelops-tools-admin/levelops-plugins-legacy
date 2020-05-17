@@ -46,8 +46,8 @@ def get_formats_and_outputs(options):
   formats = []
   if options.json:
     formats.append("json")
-  if options.csv:
-    formats.append("csv")
+  # if options.csv:
+  #   formats.append("csv")
   outputs = []
   if options.output_file:
     outputs.append("file")
@@ -76,15 +76,15 @@ def handle_output(formats, outputs, output_location, reslults):
           print("")
         if format == "json":
           print(dumps(result, indent=2, escape_forward_slashes=False))
-        if format == "csv":
-          print("type,commit,file_name,secret,lines")
-          for file_name in result['hits']:
-            for match in result['hits'][file_name]:
-              print("current,,%s,%s,\"%s\"" % (file_name,match,','.join(result['hits'][file_name][match]['lines'])))
-          for commit in result['historic']:
-            for file_name in result['historic'][commit]:
-              for match in result['historic'][commit][file_name]:
-                print("historic,%s,%s,%s,\"%s\"" % (commit, file_name, match, ','.join(result['historic'][commit][file_name][match]['lines'])))
+        # if format == "csv":
+        #   print("type,commit,file_name,secret,lines")
+        #   for file_name in result['hits']:
+        #     for match in result['hits'][file_name]:
+        #       print("current,,%s,%s,\"%s\"" % (file_name,match,','.join(result['hits'][file_name][match]['lines'])))
+        #   for commit in result['historic']:
+        #     for file_name in result['historic'][commit]:
+        #       for match in result['historic'][commit][file_name]:
+        #         print("historic,%s,%s,%s,\"%s\"" % (commit, file_name, match, ','.join(result['historic'][commit][file_name][match]['lines'])))
       consecutive = 0
       if "file" in outputs:
         if generate_destination:
@@ -98,15 +98,15 @@ def handle_output(formats, outputs, output_location, reslults):
         with open(destination, 'w') as out:
           if format == "json":
             dump(result, out, indent=2, escape_forward_slashes=False)
-          if format == "csv":
-            out.write("type,commit,file_name,secret,lines\n")
-            for file_name in result['hits']:
-              for match in result['hits'][file_name]:
-                out.write("current,,%s,%s,\"%s\"\n" % (file_name,match,','.join(result['hits'][file_name][match]['lines'])))
-            for commit in result['historic']:
-              for file_name in result['historic'][commit]:
-                for match in result['historic'][commit][file_name]:
-                  out.write("historic,%s,%s,%s,\"%s\"\n" % (commit, file_name, match, ','.join(result['historic'][commit][file_name][match]['lines'])))
+          # if format == "csv":
+          #   out.write("type,commit,file_name,secret,lines\n")
+          #   for file_name in result['hits']:
+          #     for match in result['hits'][file_name]:
+          #       out.write("current,,%s,%s,\"%s\"\n" % (file_name,match,','.join(result['hits'][file_name][match]['lines'])))
+          #   for commit in result['historic']:
+          #     for file_name in result['historic'][commit]:
+          #       for match in result['historic'][commit][file_name]:
+          #         out.write("historic,%s,%s,%s,\"%s\"\n" % (commit, file_name, match, ','.join(result['historic'][commit][file_name][match]['lines'])))
 
 
 def validate_args(options, f_targets):
