@@ -88,34 +88,6 @@ The GCP Service Discovery Tool requires the gcloud cli to be installed and acces
    </td>
   </tr>
   <tr>
-    <td><p>Jenkins Security Posture Checker</p></td>
-    <td>CI/CD Tool Hardening</td>
-    <td><p>Use this tool to check the security posture of your Jenkins environments, against 40+ security spanning across access, permissions, settings and plug-ins</p><br /> Recommended Use Cases: <br /> <ul><li>Tool Hardening</li></ul></td>
-    <td><ul><li>
-
-[html](samples/jenkins_security_hardening_plugin/LevelOps_Jenkins_Security_Report.html)
-</li></ul></td>
-    <td>
-    <b>Standalone mode:</b>
-
-      Install LevelOps Jenkins Security Plugin.
-      In Jenkins UI go to "Manage Jenkins" -> "LevelOps Plugin" & configure the Plugin.
-      e.g. The report directory path. Frequency to run the report. (cron schedule) etc.
-      To run report immediately click on "Run Report Now".
-      To view report click on "Download Report".
-      
-   <b>Connected mode:</b>
-
-      Install LevelOps Jenkins Security Plugin.
-      In Jenkins UI go to "Manage Jenkins" -> "LevelOps Plugin" & configure the Plugin.
-      e.g. The report directory path. Frequency to run the report. (cron schedule) etc.
-      To send data to LevelOps, click on the optional check "Send data to LevelOps".
-      To run report immediately click on "Run Report Now".
-      To view report click on "Download Report".
-    
-   </td>
-  </tr>
-  <tr>
     <td><p>LevelOps Brakeman Plugin</p></td>
     <td>Source Code Audit</td>
     <td><p>Use this tool to easily run brakeman in your source code to find security vulnerabilities.</p><br /> Recommended Use Cases: <br /> <ul><li>Code pre-commit validation</li><li>Pull request pre-merge validation</li><li>CI/CD Workflow</li></ul><br /> Pre-requirements:<ul><li>Docker for --docker mode</li><li>brakeman gem (gem install brakeman) for --gem mode</li></ul></td>
