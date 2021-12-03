@@ -1,6 +1,7 @@
 requests==2.22.0
 ujson==1.35
-PyYaml==5.2
+PyYaml==5.4
 kubernetes==10.0.1
 pdfminer.six==20200124
 beautifulsoup4==4.8.2
+urllib3>=1.26.5 # not directly required, pinned by Snyk to avoid a vulnerability
