@@ -1,4 +1,4 @@
-FROM alpine as base
+FROM alpine:3.15 as base
 RUN apk --update add --no-cache bash ncurses git less openssh && \
     rm -rf /var/lib/apt/lists/* 
 
