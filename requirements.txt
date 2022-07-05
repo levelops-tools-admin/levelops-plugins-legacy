@@ -1,5 +1,5 @@
 requests==2.22.0
-ujson==1.35
+ujson==5.4.0
 PyYaml==5.2
 kubernetes==10.0.1
 pdfminer.six==20200124
